@@ -1,0 +1,11 @@
+{
+  "intents": [
+    {
+      "intent": "Pun"
+    },
+    {
+      "intent": "AMAZON.HelpIntent"
+    }
+  ]
+}
+
