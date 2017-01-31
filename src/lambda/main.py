@@ -109,10 +109,7 @@ def get_pun_response():
 def get_shower_thought_response():
     #curl -s -L -A 'asdf' -X GET 'https://www.reddit.com/r/Showerthoughts/random.json'  
 
-    response = get(
-        'https://www.reddit.com/r/Showerthoughts/random.json',
-        headers={ 'User-Agent': 'Andy' }
-    )
+    response = get('https://remote-apis.andrewmacheret.com/reddit/Showerthoughts/random.json')
     data = response.json()
     pp.pprint(data)
     shower_thought = data[0]['data']['children'][0]['data']['title']
