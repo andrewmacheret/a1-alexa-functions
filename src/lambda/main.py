@@ -41,7 +41,7 @@ def on_launch(launch_request, session):
           ", sessionId=" + session['sessionId'])
     # Get's the help section
 
-    return get_pun_response()
+    return get_welcome_response()
 
 
 def on_intent(intent_request, session):
@@ -56,6 +56,10 @@ def on_intent(intent_request, session):
     # Sends the request to one of our intents
     if intent_name == "Pun":
         return get_pun_response()
+    elif intent_name == "ShowerThought":
+        return get_shower_thought_response()
+    elif intent_name == "AMAZON.HelpIntent":
+        return get_welcome_response()
     else:
         print(intent_name)
         return build_response({},  build_speechlet_response(None, 'not ok'))
@@ -75,7 +79,7 @@ def get_welcome_response():
             the program, Sends a Card with that data as well"""
     session_attributes = {}
     card_title = "Andy"
-    speech_output = "Ask Andy for anything, especially for a pun."
+    speech_output = "Ask Andy for a pun or a shower thought."
     reprompt_text = "Please ask me for a pun."
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
@@ -100,6 +104,19 @@ def get_pun_response():
     speech = build_speechlet_response("Andy - Pun", pun)
     return build_response({}, speech)
 
+def get_shower_thought_response():
+    #curl -s -L -A 'asdf' -X GET 'https://www.reddit.com/r/Showerthoughts/random.json'  
+
+    response = get(
+        'https://www.reddit.com/r/Showerthoughts/random.json',
+        headers={ 'User-Agent': 'Andy' }
+    )
+    data = response.json()
+    pp.pprint(data)
+    shower_thought = data[0]['data']['children'][0]['data']['title']
+
+    speech = build_speechlet_response("Andy - Shower Thought", shower_thought)
+    return build_response({}, speech)
 
 # --------------- Helpers that build all of the responses ----------------
 

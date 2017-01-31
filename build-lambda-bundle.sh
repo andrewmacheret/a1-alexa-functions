@@ -2,8 +2,6 @@
 
 # Generate Lambda zip file
 
-echo "Building Lambda bundle."
-
 echo "Copying files to lambda-build ..."
 cp -R ./src/lambda lambda-build
 cd lambda-build

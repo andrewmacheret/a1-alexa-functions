@@ -1,4 +1,6 @@
-Alexa open Andy
-Alexa ask Andy for a pun
-Alexa ask for a pun
-
+AMAZON.HelpIntent Alexa open Andy
+AMAZON.HelpIntent Alexa Andy help
+Pun Alexa ask Andy for a pun
+Pun Alexa give me a pun
+ShowerThought Alexa ask Andy for a shower thought
+ShowerThought Alexa give me a shower thought

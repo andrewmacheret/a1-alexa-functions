@@ -4,6 +4,9 @@
       "intent": "Pun"
     },
     {
+      "intent": "ShowerThought"
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }
   ]

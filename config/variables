@@ -1,3 +1,2 @@
-ROLE_NAME="AmazonAlexaSkill"
-SNS_TOPIC_NAME="AlexaAndySkillCommands"
+ROLE_NAME="AlexaAndySkill"
 LAMBDA_FUNCTION_NAME="AlexaAndySkill"
