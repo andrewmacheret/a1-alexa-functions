@@ -58,6 +58,8 @@ def on_intent(intent_request, session):
         return get_pun_response()
     elif intent_name == "ShowerThought":
         return get_shower_thought_response()
+    elif intent_name == "MathFact":
+        return get_math_fact_response(intent)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     else:
@@ -79,7 +81,7 @@ def get_welcome_response():
             the program, Sends a Card with that data as well"""
     session_attributes = {}
     card_title = "Andy"
-    speech_output = "Ask Andy for a pun or a shower thought."
+    speech_output = "Ask Andy for a pun, a shower thought, or a math fact."
     reprompt_text = "Please ask me for a pun."
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
@@ -117,6 +119,22 @@ def get_shower_thought_response():
 
     speech = build_speechlet_response("Andy - Shower Thought", shower_thought)
     return build_response({}, speech)
+
+def get_math_fact_response(intent):
+    number = None
+    pp.pprint(intent)
+    number = intent['slots']['number'].get('value')
+    numberString = int(number) if number is not None else 'random'
+
+    response = get(
+        'http://numbersapi.com/%s' % (numberString),
+        headers={ 'User-Agent': 'Andy' }
+    )
+    math_fact = response.text
+
+    speech = build_speechlet_response("Andy - Math Fact", math_fact)
+    return build_response({}, speech)
+
 
 # --------------- Helpers that build all of the responses ----------------
 

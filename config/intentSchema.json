@@ -7,8 +7,16 @@
       "intent": "ShowerThought"
     },
     {
+      "intent": "MathFact",
+      "slots": [
+        {
+          "name": "number",
+          "type": "AMAZON.NUMBER"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }
   ]
 }
-

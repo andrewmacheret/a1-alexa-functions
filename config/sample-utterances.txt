@@ -1,6 +1,6 @@
 AMAZON.HelpIntent Alexa open Andy
-AMAZON.HelpIntent Alexa Andy help
+AMAZON.HelpIntent Alexa ask Andy for help
 Pun Alexa ask Andy for a pun
-Pun Alexa give me a pun
 ShowerThought Alexa ask Andy for a shower thought
-ShowerThought Alexa give me a shower thought
+MathFact Alexa ask Andy for a math fact
+MathFact Alexa ask Andy for a math fact about {number}
