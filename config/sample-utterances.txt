@@ -4,3 +4,4 @@ Pun Alexa ask Andy for a pun
 ShowerThought Alexa ask Andy for a shower thought
 MathFact Alexa ask Andy for a math fact
 MathFact Alexa ask Andy for a math fact about {number}
+MissYou Alexa ask Andy if he {verb} {person}

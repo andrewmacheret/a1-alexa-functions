@@ -9,6 +9,15 @@ cd lambda-build
 echo "Running pip install ..."
 pip install -I -r ./requirements.txt --install-option="--install-purelib=$PWD"
 
+echo 'Testing ...'
+python test.py || {
+  echo 'Tests failed, cleaning up ...'
+  cd - >/dev/null
+  rm -rf lambda-build
+  exit 1
+}
+echo 'Tests passed!'
+
 echo "Zipping files ..."
 zip -q -r ../lambda-build.zip .
 

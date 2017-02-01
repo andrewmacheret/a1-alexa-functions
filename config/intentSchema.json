@@ -16,6 +16,19 @@
       ]
     },
     {
+      "intent": "MissYou",
+      "slots": [
+        {
+          "name": "verb",
+          "type": "MISS_YOU_VERB"
+        },
+        {
+          "name": "person",
+          "type": "AMAZON.US_FIRST_NAME"
+        }
+      ]
+    },
+    {
       "intent": "AMAZON.HelpIntent"
     }
   ]

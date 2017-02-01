@@ -4,6 +4,8 @@ from urllib import quote
 import json
 from requests import get
 import pprint
+import re
+
 pp = pprint.PrettyPrinter(indent=4)
 
 def lambda_handler(event, context):
@@ -60,6 +62,8 @@ def on_intent(intent_request, session):
         return get_shower_thought_response()
     elif intent_name == "MathFact":
         return get_math_fact_response(intent)
+    elif intent_name == "MissYou":
+        return get_miss_you_response(intent)
     elif intent_name == "AMAZON.HelpIntent":
         return get_welcome_response()
     else:
@@ -81,7 +85,7 @@ def get_welcome_response():
             the program, Sends a Card with that data as well"""
     session_attributes = {}
     card_title = "Andy"
-    speech_output = "Ask Andy for a pun, a shower thought, or a math fact."
+    speech_output = "Ask Andy for a pun, a shower thought, a math fact, or if he loves you."
     reprompt_text = "Please ask me for a pun."
     should_end_session = False
     return build_response(session_attributes, build_speechlet_response(
@@ -132,6 +136,27 @@ def get_math_fact_response(intent):
     speech = build_speechlet_response("Andy - Math Fact", math_fact)
     return build_response({}, speech)
 
+def get_miss_you_response(intent):
+    pp.pprint(intent)
+
+    person = None
+    person = intent['slots']['person'].get('value')
+    if person is None:
+        person = 'you'
+    print('person:', person)
+    regex = re.compile(r'\bme\b', re.IGNORECASE)
+    person = regex.sub('you', person)
+
+    verb = None
+    verb = intent['slots']['verb'].get('value')
+    if verb is None:
+        verb = 'misses'
+    print('verb:', verb)
+
+    text = 'Andy %s %s so much!' % (verb, person)
+    
+    speech = build_speechlet_response("Andy - Miss You", text)
+    return build_response({}, speech)
 
 # --------------- Helpers that build all of the responses ----------------
 
