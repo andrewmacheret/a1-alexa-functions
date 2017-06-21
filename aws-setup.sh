@@ -67,7 +67,7 @@ aws lambda add-permission \
   --action lambda:invokeFunction \
   --principal alexa-appkit.amazon.com
 
-echo "Done!"
+echo 'Done!'
 echo
 echo "Next, go to https://developer.amazon.com/edw/home.html#/skills/list and create an Alexa Skill."
 echo "Lambda function ARN: $LAMBDA_FUNCTION_ARN"
